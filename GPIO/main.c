@@ -2,7 +2,7 @@
 
 main()
 {
-  
+
     GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_OUT_PP_LOW_SLOW);
 
     while (1)
