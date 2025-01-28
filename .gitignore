@@ -6,6 +6,8 @@
 !/**/nbproject/*.xml
 /**/[Ff]ree/production/*
 /**/[Pp]ro/production/*
+/**/Release/*
+/**/Debug/*
 
 # Uncomment these to include hex/elf files
 #!/**/[Ff]ree/production/*.hex
