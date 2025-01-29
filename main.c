@@ -25,5 +25,11 @@ void Clock_Config(void)
 main()
 {
 	Clock_Config();
-	while (1);
+	GPIO_Init(GPIOA, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);
+
+	while (1) {
+		GPIO_WriteReverse(GPIOA, GPIO_PIN_3);
+		Delay_ms(1000);
+	}
+
 }
