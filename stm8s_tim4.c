@@ -27,7 +27,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_tim4.h"
+#include "stm8s_conf.h"
 
+
+static uint16_t count = 0;
 /** @addtogroup STM8S_StdPeriph_Driver
   * @{
   */
@@ -411,6 +414,33 @@ void Delay_ms(uint32_t ms) {
    
 	 while(ms--)
 		TIM4_Init();
+}
+
+void Delay_ms_int(uint32_t ms) {
+	count=0;
+	while(count != ms);
+}
+
+
+@far @interrupt void Tim4Update_isr(void) {
+
+	count++;
+	TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+}
+
+void MX_TIM4_Init(void)
+{
+	TIM4_DeInit();
+	TIM4_TimeBaseInit(TIM4_PRESCALER_128, 125);
+	TIM4_ARRPreloadConfig(ENABLE);
+	//Clear TIM4 update flag
+	TIM4_ClearFlag(TIM4_FLAG_UPDATE);
+
+	//Enable update interrupt
+	TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE);
+	TIM4_Cmd(ENABLE);
+
+	enableInterrupts();
 }
 
 /**

@@ -26,10 +26,12 @@ main()
 {
 	Clock_Config();
 	GPIO_Init(GPIOA, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);
+	MX_TIM4_Init();
+	rim();
 
 	while (1) {
+		Delay_ms_int(100);
 		GPIO_WriteReverse(GPIOA, GPIO_PIN_3);
-		Delay_ms(1000);
 	}
 
 }

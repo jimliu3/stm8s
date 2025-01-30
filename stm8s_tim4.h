@@ -155,6 +155,8 @@ ITStatus TIM4_GetITStatus(TIM4_IT_TypeDef TIM4_IT);
 void TIM4_ClearITPendingBit(TIM4_IT_TypeDef TIM4_IT);
 void TIM4_Init(void);
 void Delay_ms(uint32_t ms);
+void Delay_ms_int(uint32_t ms);
+void MX_TIM4_Init(void);
 
 /**
   * @}
