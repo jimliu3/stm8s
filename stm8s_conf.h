@@ -8,6 +8,7 @@
 #include "stm8s_gpio.h"
 #include "stm8s_clk.h"
 #include "stm8s_tim4.h"
+#include "stm8s_i2c.h"
 
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT
