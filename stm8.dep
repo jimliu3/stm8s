@@ -1,0 +1,32 @@
+;	STMicroelectronics dependencies file
+
+[Version]
+Keyword=ST7Project
+Number=1.3
+
+[Root.Source Files.stm8s_max72xx.c.Config.0]
+ExternDep= stm8s_max72xx.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_max72xx.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h  stm8s_i2c.h stm8s_spi.h stm8s_rst.h lcd_i2c.h STM8S.h
+
+[Root.Source Files.stm8s_tim4.c.Config.0]
+ExternDep= stm8s_tim4.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_tim4.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_i2c.h  stm8s_spi.h stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.stm8s_spi.c.Config.0]
+ExternDep= stm8s_spi.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_spi.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h  stm8s_i2c.h stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.stm8s_rst.c.Config.0]
+ExternDep= stm8s_rst.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_rst.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h  stm8s_i2c.h stm8s_spi.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.stm8s_i2c.c.Config.0]
+ExternDep= stm8s_i2c.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_i2c.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h  stm8s_spi.h stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.stm8s_gpio.c.Config.0]
+ExternDep= stm8s_gpio.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_gpio.h stm8s.h stm8s_conf.h stm8s_clk.h stm8s_tim4.h stm8s_i2c.h  stm8s_spi.h stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.stm8s_clk.c.Config.0]
+ExternDep= stm8s_clk.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h"  stm8s_clk.h stm8s.h stm8s_conf.h stm8s_gpio.h stm8s_tim4.h stm8s_i2c.h  stm8s_spi.h stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
+
+[Root.Source Files.lcd_i2c.c.Config.0]
+ExternDep= lcd_i2c.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h" lcd_i2c.h  STM8S.h stm8s_conf.h stm8s.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h  stm8s_i2c.h stm8s_spi.h stm8s_rst.h stm8s_max72xx.h
+
+[Root.Source Files.main.c.Config.0]
+ExternDep= main.c  "C:\Program Files (x86)\COSMIC\FSE_Compilers\CXSTM8\HSTM8\mods0.h" stm8s.h  stm8s_conf.h stm8s_gpio.h stm8s_clk.h stm8s_tim4.h stm8s_i2c.h stm8s_spi.h  stm8s_rst.h lcd_i2c.h STM8S.h stm8s_max72xx.h
