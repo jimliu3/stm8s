@@ -46,7 +46,7 @@ ptn_Child33=Bar-32
 
 [WorkState_v1_2.DockState.Bar-0]
 BarID=59419
-Bars=20
+Bars=22
 Bar#0=0
 Bar#1=59647
 Bar#2=0
@@ -67,6 +67,8 @@ Bar#16=0
 Bar#17=32768
 Bar#18=0
 Bar#19=0
+Bar#20=0
+Bar#21=0
 Style=0
 ExStyle=0
 PrevFloating=False
@@ -1244,7 +1246,7 @@ ptn_Child1=MainFrame
 ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
-WindowPlacement=MCAAAAAACAAAAAAACAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPHLAAAAAAEHAAAAAAEGEAAAAADBDAAAAA
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPHLAAAAAAEHAAAAAAEGEAAAAADBDAAAAA
 Title=ST Visual Develop - stm8.stw - [main.c]
 
 [WorkState_v1_2.Frames.ChildFrames]
@@ -1256,6 +1258,7 @@ ptn_Child5=Document-4
 ptn_Child6=Document-5
 ptn_Child7=Document-6
 ptn_Child8=Document-7
+ptn_Child9=Document-8
 
 [WorkState_v1_2.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
@@ -1342,5 +1345,16 @@ DocPathName=stm8s_max72xx.c
 DocumentString=
 DocTemplateIndex=0
 WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPANAAAAAAANAAAAAAFEGAAAAAHJCAAAAA
+IsActiveChildFrame=False
+IsFrameVisible=True
+
+[WorkState_v1_2.Frames.ChildFrames.Document-8]
+ptn_Child1=ViewFrame-0
+
+[WorkState_v1_2.Frames.ChildFrames.Document-8.ViewFrame-0]
+DocPathName=stm8s_tim4.c
+DocumentString=
+DocTemplateIndex=0
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPIPPPPPPPBOPPPPPPGLAAAAAAGLAAAAAALCGAAAAANHCAAAAA
 IsActiveChildFrame=False
 IsFrameVisible=True

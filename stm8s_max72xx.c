@@ -67,7 +67,7 @@ void MAX7219_init(void)
     SPI_write(scan_limit_reg, 0x07);
     SPI_write(intensity_reg, 0x04);
     SPI_write(display_test_reg, test_cmd);
-    delay_ms(10);     
+    Delay_ms_int(10);     
     SPI_write(display_test_reg, no_test_cmd);  
 }
 
@@ -86,7 +86,7 @@ void display_clear(void) {
 	{
 			
 			SPI_write((1 + j),zeros_clr[j]);
-			delay_ms(100);
+			Delay_ms_int(10);
 	}
 
 }
@@ -109,7 +109,7 @@ void display_char(int alphabet_sequence)
 		for(i=0; i<8; i++){
 	SPI_write((i+1), alpha_char[alphabet_sequence][i]);
 		
-		delay_ms(100);
+		Delay_ms_int(10);
 		
 		}
 
@@ -137,10 +137,27 @@ void display_string(const char string[]){
 		display_char(pos);
 	
 	pos++;	
-	delay_ms(500);
+	Delay_ms_int(50);
 	}
 }
 
+}
+
+void SPI_Clock_Config(void)
+{
+     CLK_DeInit();
+                
+ 
+     CLK_HSICmd(ENABLE);
+     while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
+     CLK_ClockSwitchCmd(ENABLE);
+     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+     CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);               
+     CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI,
+     DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
+                
+     CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, ENABLE);
+ 
 }
 
 

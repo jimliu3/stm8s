@@ -3,7 +3,7 @@
 u8 currentValue; // Current status of all 8 pins of PCF7584
 u8 d10,d9,d8,d7,d6,d5,d4,d3,d2,d1; // Digits for integer print
 int Input_Clock; // Clock speed in MHz
-
+/*
 void delay_ms (int ms) //milli second delay
 {
   int a =0 ;
@@ -14,7 +14,7 @@ void delay_ms (int ms) //milli second delay
       _asm("nop"); //Perform no operation 
   }
 }
-
+*/
 void PCF7584write8(u8 iData) // Write all 8 pins of PCF7584
 {
 	I2C_GenerateSTART(ENABLE);
@@ -68,22 +68,22 @@ void LCD_Cmd(char a)
     PCF7584write(0,0); //RS = 0          
     LCD_SetBit(a); //Incoming Hex value
     PCF7584write(2,1); //EN  = 1         
-		delay_ms(2);
+		Delay_ms_int(2);
 		PCF7584write(2,0); //EN  = 0      
 }
 
  void LCD_Begin(void)
  {
-	  delay_ms(10);
+	  Delay_ms_int(10);
 	  Input_Clock = CLK_GetClockFreq()/1000000;  // Clock speed in MHz
     I2C_Init(100000, LCD_I2C_Address, I2C_DUTYCYCLE_2, I2C_ACK_CURR, I2C_ADDMODE_7BIT, Input_Clock);
 	  PCF7584write8(0b00000000);
 	  LCD_SetBit(0x00);
-	  delay_ms(1000); 
+	  Delay_ms_int(1000); 
     LCD_Cmd(0x03);
-	  delay_ms(5);
+	  Delay_ms_int(5);
 		LCD_Cmd(0x03);
-	  delay_ms(11);
+	  Delay_ms_int(11);
     LCD_Cmd(0x03); 
     LCD_Cmd(0x02); //02H is used for Return home -> Clears the RAM and initializes the LCD
     LCD_Cmd(0x02); //02H is used for Return home -> Clears the RAM and initializes the LCD
@@ -131,12 +131,12 @@ void LCD_Print_Char(char data)  //Send 8-bits through 4-bit mode
 	 
    LCD_SetBit(Upper_Nibble>>4);  //Send upper half by shifting by 4
    PCF7584write(2,1); //EN = 1
-   delay_ms(5); 
+   Delay_ms_int(5); 
    PCF7584write(2,0); //EN = 0
 	 
    LCD_SetBit(Lower_Nibble); //Send Lower half
    PCF7584write(2,1); //EN = 1
-   delay_ms(5); 
+   Delay_ms_int(5); 
    PCF7584write(2,0); //EN = 0
 }
 
@@ -216,3 +216,20 @@ void LCD_BL_Off(void) // Back light off
 {
 	PCF7584write(3,0);
 }
+
+void I2C_Clock_Config(void)
+{
+	//enable internal HSI clock(16MHZ)
+	CLK_HSICmd(ENABLE);
+
+	//make sure internal clock(HSI) is stable
+	while (CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == RESET);
+
+	//set HSI DIV(High speed internal clock prescaler: 1)
+	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+
+	//enable i2c function
+	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
+}
+
+
