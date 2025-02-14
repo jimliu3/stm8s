@@ -216,3 +216,38 @@ void LCD_BL_Off(void) // Back light off
 {
 	PCF7584write(3,0);
 }
+
+void lcd_setup(void)
+{
+	LCD_Begin();
+	LCD_Clear();
+	LCD_BL_On();  // Back light on
+	LCD_Set_Cursor(1,1);
+	LCD_Print_String("STM8 LCD 1602");
+	LCD_Set_Cursor(2,1);
+	LCD_Print_String("by MICROPETA");
+	delay_ms(2000);
+	LCD_Clear();
+	LCD_BL_Off();  // Back light off
+	LCD_Set_Cursor(1,1);
+	LCD_Print_String("Nizar Mohideen");
+	delay_ms(2000);
+	LCD_BL_On();  // Back light on
+	LCD_Set_Cursor(2,1);
+	LCD_Print_String("Score: ");
+}
+
+void I2C_Clock_Config(void)
+{
+	//enable internal HSI clock(16MHZ)
+	CLK_HSICmd(ENABLE);
+
+	//make sure internal clock(HSI) is stable
+	while (CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == RESET);
+
+	//set HSI DIV(High speed internal clock prescaler: 1)
+	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+
+	//enable i2c function
+	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
+}

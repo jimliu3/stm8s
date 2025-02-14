@@ -327,6 +327,7 @@ void SPI_ClearITPendingBit(SPI_IT_TypeDef SPI_IT);
 void SPI_setup(void);
 void SPI_write(unsigned char slave_address, unsigned char value);
 
+
 /**
   * @}
   */
