@@ -14,3 +14,7 @@
 #!/**/[Ff]ree/production/*.elf
 #!/**/[Pp]ro/production/*.hex
 #!/**/[Pp]ro/production/*.elf
+#!/**/[Pp]ro/production/*.patch
+
+TAGS.txt
+TAGS_Filelist.txt

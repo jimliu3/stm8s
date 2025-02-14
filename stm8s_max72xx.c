@@ -143,5 +143,23 @@ void display_string(const char string[]){
 
 }
 
+void SPI_Clock_Config(void)
+{
+     CLK_DeInit();
+                
+ 
+     CLK_HSICmd(ENABLE);
+     while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
+     CLK_ClockSwitchCmd(ENABLE);
+     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
+     CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);                
+     CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI, 
+     DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
+                
+     CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, ENABLE);
+ 
+}
+
+
 
 
