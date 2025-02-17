@@ -13,6 +13,7 @@ void lcd_count(void);
 
 main()
 {
+	/*
 	SPI_Clock_Config();
 	SPI_GPIO_setup();
 	SPI_setup();
@@ -37,6 +38,20 @@ main()
 
 	SPI_print();
 	}
+	*/
+	
+	GPIO_Init_LED(); 
+    Flash_WriteData(); 
+    Flash_Verify(); 
+
+	while (1){
+		if (data1 == 0x01 && data2 == 0x02) {
+        	LED_Toggle();
+			for (i = 0; i < 5000; i++);
+    	} else {
+			GPIO_WriteHigh(LED_PORT, LED_PIN);
+    	}
+	}  
 
 }
 
