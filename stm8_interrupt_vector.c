@@ -2,6 +2,8 @@
  *	Copyright (c) 2007 STMicroelectronics
  */
 
+#include "stm8s_conf.h"
+
 typedef void @far (*interrupt_handler_t)(void);
 
 struct interrupt_vector {
@@ -20,7 +22,15 @@ struct interrupt_vector {
 extern void _stext();     /* startup routine */
 
 extern @far @interrupt void Tim4Update_isr(void);
+extern @far @interrupt void pc_irqhandler(void);
 
+
+@far @interrupt void pc_irqhandler(void)
+{
+	GPIO_WriteReverse(GPIOB, GPIO_PIN_5);
+	//Delay_ms_int(30);
+	delay_ms(50);
+}
 
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
@@ -30,7 +40,7 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq2  */
 	{0x82, NonHandledInterrupt}, /* irq3  */
 	{0x82, NonHandledInterrupt}, /* irq4  */
-	{0x82, NonHandledInterrupt}, /* irq5  */
+	{0x82, (interrupt_handler_t)pc_irqhandler}, /* irq5  */
 	{0x82, NonHandledInterrupt}, /* irq6  */
 	{0x82, NonHandledInterrupt}, /* irq7  */
 	{0x82, NonHandledInterrupt}, /* irq8  */

@@ -19,6 +19,9 @@
 //#include "stm8s103_spi.h"
 #include "lcd_i2c.h"
 #include "stm8s_max72xx.h"
+#include "stm8s_exti.h"
+
+
 
 /* Exported macro ------------------------------------------------------------*/
 #ifdef  USE_FULL_ASSERT
