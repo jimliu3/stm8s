@@ -160,6 +160,17 @@ void SPI_Clock_Config(void)
  
 }
 
+void SPI_GPIO_setup(void)
+{
+     GPIO_DeInit(GPIOC);
+     GPIO_Init(GPIOC, (GPIO_Pin_TypeDef)(GPIO_PIN_5 | GPIO_PIN_6), 
+          GPIO_MODE_OUT_PP_HIGH_FAST);
+}
 
-
+void SPI_print(void)
+{
+		display_clear(); //Clearing the Display
+		display_string(alphabets);  //Displaying a String
+		delay_ms(2000);
+}
 

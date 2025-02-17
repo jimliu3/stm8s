@@ -9,46 +9,35 @@
 #include "lcd_i2c.h"
 
 int testValue = 0;
-
-void GPIO_setup(void);
 void lcd_count(void);
-void SPI_print(void);
-
-const char input_string2[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 main()
 {
-	//I2C_Clock_Config();
 	SPI_Clock_Config();
-	GPIO_setup();
+	SPI_GPIO_setup();
 	SPI_setup();
-	MX_TIM4_Init();
-	//lcd_setup();
+
+	//GPIO_Init(GPIOA, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST); //toggle gpio test pin
+	//I2C_Clock_Config();  //enable i2c feature
+
+	//MX_TIM4_Init();  //enable tim4 init and interrupt
 	MAX7219_init();
-	rim();
-	
-	//
-	  display_clear(); //Clearing the display
-		delay_ms(1000);
+	//lcd_setup();
+
+	rim();    //enable interrupt
+
+	display_clear(); //Clearing the display
+	delay_ms(1000);
 
 	while (1) {
-		//Delay_ms_int(100);
-		//GPIO_WriteReverse(GPIOA, GPIO_PIN_3);
-		
-		//lcd_count();
-		
-		SPI_print();
+	//Delay_ms_int(100);    //toggle gpio delay
+	//GPIO_WriteReverse(GPIOA, GPIO_PIN_3);   //toggle gpio
+
+	//lcd_count();
+
+	SPI_print();
 	}
 
-}
-
-void GPIO_setup(void)
-{
-     GPIO_DeInit(GPIOC);
-     GPIO_Init(GPIOC, (GPIO_Pin_TypeDef)(GPIO_PIN_5 | GPIO_PIN_6), 
-          GPIO_MODE_OUT_PP_HIGH_FAST);
-		 
-		 GPIO_Init(GPIOA, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);
 }
 
 void lcd_count(void)
@@ -57,11 +46,4 @@ void lcd_count(void)
 	LCD_Print_Integer(testValue);
 	delay_ms(100);
 	testValue++;
-}
-
-void SPI_print(void)
-{
-		display_clear(); //Clearing the Display
-		display_string(input_string2);  //Displaying a String
-		delay_ms(2000);
 }

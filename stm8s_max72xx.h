@@ -30,6 +30,8 @@ void display_clear(void);
 void display_char(int alphabet_sequence);
 void display_string(const char string[]);
 void SPI_Clock_Config(void);
+void SPI_GPIO_setup(void);
+void SPI_print(void);
 
 
 
