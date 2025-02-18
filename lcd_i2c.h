@@ -14,3 +14,4 @@ void LCD_BL_On(void); // Back light on
 void LCD_BL_Off(void); // Back light off
 void I2C_Clock_Config(void);
 void lcd_setup(void);
+void lcd_count(void);
