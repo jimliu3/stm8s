@@ -215,7 +215,7 @@ String.6.0=2025,1,28,9,56,7
 [Root.Source Files]
 ElemType=Folder
 PathName=Source Files
-Child=Root.Source Files.stm8s_max72xx.c
+Child=Root.Source Files.stm8s_flash.c
 Next=Root.Include Files
 Config.0=Root.Source Files.Config.0
 Config.1=Root.Source Files.Config.1
@@ -286,6 +286,11 @@ String.4.0=
 String.5.0=
 String.6.0=2025,1,28,9,56,7
 
+[Root.Source Files.stm8s_flash.c]
+ElemType=File
+PathName=stm8s_flash.c
+Next=Root.Source Files.stm8s_max72xx.c
+
 [Root.Source Files.stm8s_max72xx.c]
 ElemType=File
 PathName=stm8s_max72xx.c
@@ -338,7 +343,7 @@ PathName=stm8_interrupt_vector.c
 [Root.Include Files]
 ElemType=Folder
 PathName=Include Files
-Child=Root.Include Files.stm8s_tim4.h
+Child=Root.Include Files.stm8s_flash.h
 Config.0=Root.Include Files.Config.0
 Config.1=Root.Include Files.Config.1
 
@@ -407,6 +412,11 @@ String.3.0=
 String.4.0=
 String.5.0=
 String.6.0=2025,1,28,9,56,7
+
+[Root.Include Files.stm8s_flash.h]
+ElemType=File
+PathName=stm8s_flash.h
+Next=Root.Include Files.stm8s_tim4.h
 
 [Root.Include Files.stm8s_tim4.h]
 ElemType=File

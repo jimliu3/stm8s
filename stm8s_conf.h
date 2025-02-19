@@ -20,6 +20,7 @@
 #include "lcd_i2c.h"
 #include "stm8s_max72xx.h"
 #include "stm8s_exti.h"
+#include "stm8s_flash.h"
 
 
 
