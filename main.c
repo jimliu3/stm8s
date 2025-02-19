@@ -24,8 +24,8 @@ main()
 	
 	MX_TIM4_Init();          //enable tim4 init and interrupt
   //-----LCD 1602---I2C-------------
-	I2C_Clock_Config();      //enable i2c feature
-	lcd_setup();             //LCD 1602 setup
+	//I2C_Clock_Config();      //enable i2c feature
+	//lcd_setup();             //LCD 1602 setup
   //--------------------------------
 	
 /* gpio ket interrupt
@@ -38,10 +38,23 @@ main()
 	while (1) {
 	//GPIO_WriteReverse(GPIOA, GPIO_PIN_3);   //toggle gpio
 	
-	lcd_count();
+	//lcd_count();
 
 	//SPI_print();
 	
+	GPIO_Init_LED(); 
+	Flash_WriteData(); 
+	Flash_Verify(); 
+
+	while (1){
+		if (data1 == 0x01 && data2 == 0x02) {
+			LED_Toggle();
+				for (i = 0; i < 5000; i++);
+    	} else {
+			GPIO_WriteHigh(LED_PORT, LED_PIN);
+				
+    }
+	} 
 	}
 }
 
