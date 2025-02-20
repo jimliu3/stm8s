@@ -1,6 +1,8 @@
 /*	BASIC INTERRUPT VECTOR TABLE FOR STM8 devices
  *	Copyright (c) 2007 STMicroelectronics
  */
+#include "stm8s_conf.h"
+#include "stm8s_tim4.h"
 
 typedef void @far (*interrupt_handler_t)(void);
 
@@ -20,6 +22,23 @@ struct interrupt_vector {
 extern void _stext();     /* startup routine */
 
 extern @far @interrupt void Tim4Update_isr(void);
+extern @far @interrupt void pc_irqhandler(void);
+
+@far @interrupt void pc_irqhandler(void)
+{
+	sim();
+	if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_3) ==0)
+		GPIO_WriteHigh(GPIOB, GPIO_PIN_5);
+	else
+		GPIO_WriteLow(GPIOB, GPIO_PIN_5);
+
+	if(GPIO_ReadInputPin(GPIOC,GPIO_PIN_4) ==0)
+		GPIO_WriteHigh(GPIOA, GPIO_PIN_3);
+	else
+		GPIO_WriteLow(GPIOA, GPIO_PIN_3);
+
+	rim();
+}
 
 
 struct interrupt_vector const _vectab[] = {
@@ -30,7 +49,7 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq2  */
 	{0x82, NonHandledInterrupt}, /* irq3  */
 	{0x82, NonHandledInterrupt}, /* irq4  */
-	{0x82, NonHandledInterrupt}, /* irq5  */
+	{0x82, (interrupt_handler_t)pc_irqhandler}, /* irq5  */
 	{0x82, NonHandledInterrupt}, /* irq6  */
 	{0x82, NonHandledInterrupt}, /* irq7  */
 	{0x82, NonHandledInterrupt}, /* irq8  */
