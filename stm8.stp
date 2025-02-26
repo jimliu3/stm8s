@@ -73,7 +73,7 @@ Int.108=0
 String.6.0=2025,1,28,9,56,7
 String.100.0=$(TargetFName)
 String.101.0=
-String.103.0=.\;
+String.103.0=.\;src;inc;
 
 [Root.Config.0.Settings.2]
 String.2.0=
@@ -82,10 +82,10 @@ String.100.0=STM8S103F3P
 
 [Root.Config.0.Settings.3]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 -customDbg -customDebCompat -customOpt-no -customLst -l +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 +mods0 -customDebCompat -customOpt-no -customC-pp -customLst -l -iinc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2025,1,28,9,56,7
+String.6.0=2025,2,26,9,31,38
 
 [Root.Config.0.Settings.4]
 String.2.0=Assembling $(InputFile)...
@@ -106,6 +106,7 @@ String.3.1=cvdwarf $(OutputPath)$(TargetSName).sm8 -fakeVectAddr0x8000
 String.4.0=$(OutputPath)$(TargetFName)
 String.5.0=$(OutputPath)$(TargetSName).map $(OutputPath)$(TargetSName).st7 $(OutputPath)$(TargetSName).s19
 String.6.0=2025,1,28,9,56,7
+String.100.0=
 String.101.0=crtsi.st7
 String.102.0=+seg .const -b 0x8080 -m 0x1f80  -n .const -it 
 String.102.1=+seg .text -a .const  -n .text 
@@ -153,7 +154,7 @@ Int.108=0
 String.6.0=2025,1,28,9,56,7
 String.100.0=$(TargetFName)
 String.101.0=
-String.103.0=.\;
+String.103.0=.\;src;inc;
 
 [Root.Config.1.Settings.2]
 String.2.0=
@@ -162,7 +163,7 @@ String.100.0=STM8S103F3P
 
 [Root.Config.1.Settings.3]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 -iinc  +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
 String.6.0=2025,1,28,9,56,7
@@ -215,7 +216,7 @@ String.6.0=2025,1,28,9,56,7
 [Root.Source Files]
 ElemType=Folder
 PathName=Source Files
-Child=Root.Source Files.stm8s_flash.c
+Child=Root.Source Files.src\stm8s_tim4.c
 Next=Root.Include Files
 Config.0=Root.Source Files.Config.0
 Config.1=Root.Source Files.Config.1
@@ -240,10 +241,10 @@ Int.1=0
 
 [Root.Source Files.Config.0.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 -customDbg -customDebCompat -customOpt-no -customLst -l +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 +mods0 -customDebCompat -customOpt-no -customC-pp -customLst -l -iinc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2025,1,28,9,56,7
+String.6.0=2025,2,26,9,31,38
 
 [Root.Source Files.Config.0.Settings.2]
 String.2.0=Assembling $(InputFile)...
@@ -267,7 +268,7 @@ Int.1=0
 
 [Root.Source Files.Config.1.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 -iinc  +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
 String.6.0=2025,1,28,9,56,7
@@ -286,49 +287,54 @@ String.4.0=
 String.5.0=
 String.6.0=2025,1,28,9,56,7
 
-[Root.Source Files.stm8s_flash.c]
+[Root.Source Files.src\stm8s_tim4.c]
 ElemType=File
-PathName=stm8s_flash.c
-Next=Root.Source Files.stm8s_max72xx.c
+PathName=src\stm8s_tim4.c
+Next=Root.Source Files.src\stm8s_spi.c
 
-[Root.Source Files.stm8s_max72xx.c]
+[Root.Source Files.src\stm8s_spi.c]
 ElemType=File
-PathName=stm8s_max72xx.c
-Next=Root.Source Files.stm8s_tim4.c
+PathName=src\stm8s_spi.c
+Next=Root.Source Files.src\stm8s_rst.c
 
-[Root.Source Files.stm8s_tim4.c]
+[Root.Source Files.src\stm8s_rst.c]
 ElemType=File
-PathName=stm8s_tim4.c
-Next=Root.Source Files.stm8s_spi.c
+PathName=src\stm8s_rst.c
+Next=Root.Source Files.src\stm8s_max72xx.c
 
-[Root.Source Files.stm8s_spi.c]
+[Root.Source Files.src\stm8s_max72xx.c]
 ElemType=File
-PathName=stm8s_spi.c
-Next=Root.Source Files.stm8s_rst.c
+PathName=src\stm8s_max72xx.c
+Next=Root.Source Files.src\stm8s_i2c.c
 
-[Root.Source Files.stm8s_rst.c]
+[Root.Source Files.src\stm8s_i2c.c]
 ElemType=File
-PathName=stm8s_rst.c
-Next=Root.Source Files.stm8s_i2c.c
+PathName=src\stm8s_i2c.c
+Next=Root.Source Files.src\stm8s_gpio.c
 
-[Root.Source Files.stm8s_i2c.c]
+[Root.Source Files.src\stm8s_gpio.c]
 ElemType=File
-PathName=stm8s_i2c.c
-Next=Root.Source Files.stm8s_gpio.c
+PathName=src\stm8s_gpio.c
+Next=Root.Source Files.src\stm8s_flash.c
 
-[Root.Source Files.stm8s_gpio.c]
+[Root.Source Files.src\stm8s_flash.c]
 ElemType=File
-PathName=stm8s_gpio.c
-Next=Root.Source Files.stm8s_clk.c
+PathName=src\stm8s_flash.c
+Next=Root.Source Files.src\stm8s_exti.c
 
-[Root.Source Files.stm8s_clk.c]
+[Root.Source Files.src\stm8s_exti.c]
 ElemType=File
-PathName=stm8s_clk.c
-Next=Root.Source Files.lcd_i2c.c
+PathName=src\stm8s_exti.c
+Next=Root.Source Files.src\stm8s_clk.c
 
-[Root.Source Files.lcd_i2c.c]
+[Root.Source Files.src\stm8s_clk.c]
 ElemType=File
-PathName=lcd_i2c.c
+PathName=src\stm8s_clk.c
+Next=Root.Source Files.src\lcd_i2c.c
+
+[Root.Source Files.src\lcd_i2c.c]
+ElemType=File
+PathName=src\lcd_i2c.c
 Next=Root.Source Files.main.c
 
 [Root.Source Files.main.c]
@@ -343,7 +349,7 @@ PathName=stm8_interrupt_vector.c
 [Root.Include Files]
 ElemType=Folder
 PathName=Include Files
-Child=Root.Include Files.stm8s_flash.h
+Child=Root.Include Files.inc\stm8s103_spi.h
 Config.0=Root.Include Files.Config.0
 Config.1=Root.Include Files.Config.1
 
@@ -367,10 +373,10 @@ Int.1=0
 
 [Root.Include Files.Config.0.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 -customDbg -customDebCompat -customOpt-no -customLst -l +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 +mods0 -customDebCompat -customOpt-no -customC-pp -customLst -l -iinc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2025,1,28,9,56,7
+String.6.0=2025,2,26,9,31,38
 
 [Root.Include Files.Config.0.Settings.2]
 String.2.0=Assembling $(InputFile)...
@@ -394,7 +400,7 @@ Int.1=0
 
 [Root.Include Files.Config.1.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
+String.3.0=cxstm8 -iinc  +mods0 -customC-pp $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile) 
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
 String.6.0=2025,1,28,9,56,7
@@ -413,56 +419,66 @@ String.4.0=
 String.5.0=
 String.6.0=2025,1,28,9,56,7
 
-[Root.Include Files.stm8s_flash.h]
+[Root.Include Files.inc\stm8s103_spi.h]
 ElemType=File
-PathName=stm8s_flash.h
-Next=Root.Include Files.stm8s_tim4.h
+PathName=inc\stm8s103_spi.h
+Next=Root.Include Files.inc\stm8s_tim4.h
 
-[Root.Include Files.stm8s_tim4.h]
+[Root.Include Files.inc\stm8s_tim4.h]
 ElemType=File
-PathName=stm8s_tim4.h
-Next=Root.Include Files.stm8s_spi.h
+PathName=inc\stm8s_tim4.h
+Next=Root.Include Files.inc\stm8s_spi.h
 
-[Root.Include Files.stm8s_spi.h]
+[Root.Include Files.inc\stm8s_spi.h]
 ElemType=File
-PathName=stm8s_spi.h
-Next=Root.Include Files.stm8s_rst.h
+PathName=inc\stm8s_spi.h
+Next=Root.Include Files.inc\stm8s_rst.h
 
-[Root.Include Files.stm8s_rst.h]
+[Root.Include Files.inc\stm8s_rst.h]
 ElemType=File
-PathName=stm8s_rst.h
-Next=Root.Include Files.stm8s_max72xx.h
+PathName=inc\stm8s_rst.h
+Next=Root.Include Files.inc\stm8s_max72xx.h
 
-[Root.Include Files.stm8s_max72xx.h]
+[Root.Include Files.inc\stm8s_max72xx.h]
 ElemType=File
-PathName=stm8s_max72xx.h
-Next=Root.Include Files.stm8s_i2c.h
+PathName=inc\stm8s_max72xx.h
+Next=Root.Include Files.inc\stm8s_i2c.h
 
-[Root.Include Files.stm8s_i2c.h]
+[Root.Include Files.inc\stm8s_i2c.h]
 ElemType=File
-PathName=stm8s_i2c.h
-Next=Root.Include Files.stm8s_gpio.h
+PathName=inc\stm8s_i2c.h
+Next=Root.Include Files.inc\stm8s_gpio.h
 
-[Root.Include Files.stm8s_gpio.h]
+[Root.Include Files.inc\stm8s_gpio.h]
 ElemType=File
-PathName=stm8s_gpio.h
-Next=Root.Include Files.stm8s_conf.h
+PathName=inc\stm8s_gpio.h
+Next=Root.Include Files.inc\stm8s_flash.h
 
-[Root.Include Files.stm8s_conf.h]
+[Root.Include Files.inc\stm8s_flash.h]
 ElemType=File
-PathName=stm8s_conf.h
-Next=Root.Include Files.stm8s_clk.h
+PathName=inc\stm8s_flash.h
+Next=Root.Include Files.inc\stm8s_exti.h
 
-[Root.Include Files.stm8s_clk.h]
+[Root.Include Files.inc\stm8s_exti.h]
 ElemType=File
-PathName=stm8s_clk.h
-Next=Root.Include Files.stm8s.h
+PathName=inc\stm8s_exti.h
+Next=Root.Include Files.inc\stm8s_conf.h
 
-[Root.Include Files.stm8s.h]
+[Root.Include Files.inc\stm8s_conf.h]
 ElemType=File
-PathName=stm8s.h
-Next=Root.Include Files.lcd_i2c.h
+PathName=inc\stm8s_conf.h
+Next=Root.Include Files.inc\stm8s_clk.h
 
-[Root.Include Files.lcd_i2c.h]
+[Root.Include Files.inc\stm8s_clk.h]
 ElemType=File
-PathName=lcd_i2c.h
+PathName=inc\stm8s_clk.h
+Next=Root.Include Files.inc\stm8s.h
+
+[Root.Include Files.inc\stm8s.h]
+ElemType=File
+PathName=inc\stm8s.h
+Next=Root.Include Files.inc\lcd_i2c.h
+
+[Root.Include Files.inc\lcd_i2c.h]
+ElemType=File
+PathName=inc\lcd_i2c.h
