@@ -1,7 +1,5 @@
 #include "stm8s.h"
 #include "lf_Send.h"
-#include "uart.h"
-#include "CommandAgreement.h"
 
 unsigned char Set_Buff[SET_BUFF_MAX];     
 unsigned int Bit_element;
@@ -19,19 +17,11 @@ void Delay_InIt(unsigned char clk)
 
 void Delay_us(unsigned int nus)
 {
-      __asm(
-    "PUSH A          \n"
-    "DELAY_XUS:      \n"
-    "LD A,fac_us     \n"
-    "DELAY_US_1:     \n"
-    "NOP             \n"
-    "DEC A           \n"
-    "JRNE DELAY_US_1 \n"
-    "NOP             \n"
-    "DECW X          \n"
-    "JRNE DELAY_XUS  \n"
-    "POP A           \n"
-    );  
+	unsigned int j;
+
+	for(j=0;j<nus;j++)
+		__asm("nop");
+
 }
 
 void LF_ClockOccurs(unsigned char LF_Pll)
@@ -186,13 +176,6 @@ void Timecalculate(void)
     }   
 }
 
-/********************************************************************************************/
-/*                    void CarrierBurst(u16 Bit_Tim)                         */
-/***************************          发送起始时间         **********************************/
-/*                                                */
-/*  Bit_Tim      编码的时间 * 30us                */
-/********************************************************************************************/
-
 void CarrierBurst(unsigned char LF_Send_CHx)
 {
       unsigned char i;
@@ -215,14 +198,6 @@ void CarrierBurst(unsigned char LF_Send_CHx)
       }
 }
 
-/********************************************************************************************/
-/*         void Pattern(u8 R6_Dat,u8 R5_Dat,u8 Patt16_32,u8 LF_Send_CHx,u16 Bit_Tim)        */
-/***************************        发送Pattern数据        **********************************/
-/*  R6_Dat ----- Pattern1 对应AS3933 R6寄存器的值 */ 
-/*  R5_Dat ----- Pattern2 对应AS3933 R6寄存器的值 */
-/*  Patt16_32    Pattern的编码位数                */
-/*  LF_Send_CHx    发送的通道                     */
-/********************************************************************************************/
 
 void Pattern(unsigned char R6_Dat,unsigned char R5_Dat,unsigned char Patt16_32,unsigned char LF_Send_CHx)
 {
@@ -267,14 +242,6 @@ void Pattern(unsigned char R6_Dat,unsigned char R5_Dat,unsigned char Patt16_32,u
      }
 }
 
-/********************************************************************************************/
-/*  void LF_SendData(unsigned char R6_Dat,unsigned char R5_Dat,unsigned char Patt16_32,unsigned char LF_Send_CHx)  */
-/*  R6_Dat ----- Pattern1 对应AS3933 R6寄存器的值 */ 
-/*  R5_Dat ----- Pattern2 对应AS3933 R6寄存器的值 */
-/*  Patt16_32    Pattern的编码位数                */
-/*  Send_Dat     发送的数据(DAT) 这里只发送2个字节*/
-/*  LF_Send_CHx  发送的通道             */
-/********************************************************************************************/
 
 void LF_SendData(unsigned char R6_Dat,unsigned char R5_Dat,unsigned char Patt16_32,unsigned char LF_Send_CHx)
 {

@@ -157,7 +157,7 @@ void TIM4_Init(void);
 void Delay_ms(uint32_t ms);
 void Delay_ms_int(uint32_t ms);
 void MX_TIM4_Init(void);
-
+void TIM4_Delay_1us(void);
 /**
   * @}
   */

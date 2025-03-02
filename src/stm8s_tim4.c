@@ -443,6 +443,18 @@ void MX_TIM4_Init(void)
 	enableInterrupts();
 }
 
+void TIM4_Delay_1us(void) {
+    TIM4->PSCR = 4;  // Prescaler = 2^4 = 16  (16MHz / 16 = 1MHz, so 1 tick = 1£gs)
+    TIM4->ARR = 1;   // Auto-reload value for 1£gs delay
+    TIM4->CNTR = 0;  // Reset counter
+    TIM4->SR1 = 0;   // Clear update flag
+    TIM4->CR1 |= TIM4_CR1_CEN;  // Enable TIM4
+
+    while (!(TIM4->SR1 & TIM4_SR1_UIF));  // Wait for update flag
+    TIM4->SR1 &= ~TIM4_SR1_UIF;  // Clear flag
+    TIM4->CR1 &= ~TIM4_CR1_CEN;  // Disable TIM4
+}
+
 /**
   * @}
   */
