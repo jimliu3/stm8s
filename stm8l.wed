@@ -1242,7 +1242,7 @@ ptn_Child2=ChildFrames
 
 [WorkState_v1_2.Frames.MainFrame]
 WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAAADIPPPPAADIPPPPPPPPPPPPPPPPPPPPHLAAAAAAEHAAAAAAEGEAAAAADBDAAAAA
-Title=ST Visual Develop - stm8l.stw* - [stm8_interrupt_vector.c]
+Title=ST Visual Develop - stm8l.stw - [stm8_interrupt_vector.c]
 
 [WorkState_v1_2.Frames.ChildFrames]
 ptn_Child1=Document-0

@@ -293,10 +293,31 @@ Next=Root.Source Files.stm8_interrupt_vector.c
 [Root.Source Files.stm8_interrupt_vector.c]
 ElemType=File
 PathName=stm8_interrupt_vector.c
+Next=Root.Source Files.stm8l15x_clk.c
+
+[Root.Source Files.stm8l15x_clk.c]
+ElemType=File
+PathName=stm8l15x_clk.c
+Next=Root.Source Files.stm8l15x_exti.c
+
+[Root.Source Files.stm8l15x_exti.c]
+ElemType=File
+PathName=stm8l15x_exti.c
+Next=Root.Source Files.stm8l15x_gpio.c
+
+[Root.Source Files.stm8l15x_gpio.c]
+ElemType=File
+PathName=stm8l15x_gpio.c
+Next=Root.Source Files.stm8l15x_pwr.c
+
+[Root.Source Files.stm8l15x_pwr.c]
+ElemType=File
+PathName=stm8l15x_pwr.c
 
 [Root.Include Files]
 ElemType=Folder
 PathName=Include Files
+Child=Root.Include Files.discover_board.h
 Config.0=Root.Include Files.Config.0
 Config.1=Root.Include Files.Config.1
 
@@ -365,3 +386,37 @@ String.3.0=
 String.4.0=
 String.5.0=
 String.6.0=2025,3,8,17,34,17
+
+[Root.Include Files.discover_board.h]
+ElemType=File
+PathName=discover_board.h
+Next=Root.Include Files.stm8l15x.h
+
+[Root.Include Files.stm8l15x.h]
+ElemType=File
+PathName=stm8l15x.h
+Next=Root.Include Files.stm8l15x_clk.h
+
+[Root.Include Files.stm8l15x_clk.h]
+ElemType=File
+PathName=stm8l15x_clk.h
+Next=Root.Include Files.stm8l15x_conf.h
+
+[Root.Include Files.stm8l15x_conf.h]
+ElemType=File
+PathName=stm8l15x_conf.h
+Next=Root.Include Files.stm8l15x_exti.h
+
+[Root.Include Files.stm8l15x_exti.h]
+ElemType=File
+PathName=stm8l15x_exti.h
+Next=Root.Include Files.stm8l15x_gpio.h
+
+[Root.Include Files.stm8l15x_gpio.h]
+ElemType=File
+PathName=stm8l15x_gpio.h
+Next=Root.Include Files.stm8l15x_pwr.h
+
+[Root.Include Files.stm8l15x_pwr.h]
+ElemType=File
+PathName=stm8l15x_pwr.h
