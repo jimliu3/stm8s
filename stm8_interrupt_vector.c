@@ -1,7 +1,7 @@
 /*	BASIC INTERRUPT VECTOR TABLE FOR STM8 devices
  *	Copyright (c) 2007 STMicroelectronics
  */
-
+#include "discover_board.h"
 typedef void @far (*interrupt_handler_t)(void);
 
 struct interrupt_vector {
@@ -18,6 +18,13 @@ struct interrupt_vector {
 }
 
 extern void _stext();     /* startup routine */
+extern @far @interrupt void exti0_irqhandler(void);
+extern @far @interrupt void exti1_irqhandler(void);
+
+
+
+
+
 
 struct interrupt_vector const _vectab[] = {
 	{0x82, (interrupt_handler_t)_stext}, /* reset */
@@ -30,8 +37,8 @@ struct interrupt_vector const _vectab[] = {
 	{0x82, NonHandledInterrupt}, /* irq5  */
 	{0x82, NonHandledInterrupt}, /* irq6  */
 	{0x82, NonHandledInterrupt}, /* irq7  */
-	{0x82, NonHandledInterrupt}, /* irq8  */
-	{0x82, NonHandledInterrupt}, /* irq9  */
+	{0x82, (interrupt_handler_t)exti0_irqhandler}, /* irq8  */
+	{0x82, (interrupt_handler_t)exti1_irqhandler}, /* irq9  */
 	{0x82, NonHandledInterrupt}, /* irq10 */
 	{0x82, NonHandledInterrupt}, /* irq11 */
 	{0x82, NonHandledInterrupt}, /* irq12 */
